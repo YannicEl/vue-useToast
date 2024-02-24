@@ -1,0 +1,100 @@
+name: Deploy
+
+on:
+  workflow_call:
+    secrets:
+      CLOUDFLARE_API_TOKEN:
+        required: true
+      CLOUDFLARE_ACCOUNT_ID:
+        required: true
+
+jobs:
+  canary:
+    name: Canary
+
+    if: startsWith(github.event.head_commit.message, 'chore(release)') == false
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Restore docs-build cache
+        uses: actions/download-artifact@v4
+        with:
+          name: docs-build
+          path: packages/docs/.vitepress
+
+      - name: Install dependencies
+        run: pnpm --filter docs install
+
+      - name: Deploy docs
+        run: pnpm --filter docs deploy:dev | tail -n 1 > preview_url.txt
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Echo preview url
+        run: cat preview_url.txt
+
+      - name: Add preview url comment
+        if: github.event_name == 'pull_request'
+        uses: ./.github/actions/pr_comment
+        with:
+          body: preview_url.txt
+          is_file: true
+
+  production:
+    name: Production
+
+    if: startsWith(github.event.head_commit.message, 'chore(release)') == true
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Restore docs-build cache
+        uses: actions/download-artifact@v4
+        with:
+          name: docs-build
+          path: packages/docs/.vitepress
+
+      - name: Install dependencies
+        run: pnpm --filter docs install
+
+      - name: Deploy docs
+        run: pnpm --filter docs deploy:prod
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

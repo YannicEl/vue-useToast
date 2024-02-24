@@ -1,0 +1,17 @@
+{
+	"type": "module",
+	"scripts": {
+		"dev": "pnpm --parallel --filter * \"/watch|^dev/\"",
+		"release": "changelogen --dir packages/lib --release --push",
+		"release:canary": "changelogen --dir packages/lib --canary && pnpm publish --filter @vuetils/toast --no-git-checks --access public --tag canary",
+		"format": "prettier --write . ",
+		"format:check": "prettier --check ."
+	},
+	"devDependencies": {
+		"@volar/vue-typescript": "1.6.5",
+		"changelogen": "0.5.5",
+		"prettier": "3.2.5",
+		"prettier-plugin-organize-imports": "3.2.4",
+		"prettier-plugin-tailwindcss": "0.5.11"
+	}
+}

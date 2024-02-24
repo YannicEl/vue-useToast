@@ -1,0 +1,11 @@
+**/*.d.ts
+
+**/CHANGELOG.md
+**/README.md
+**/pnpm-lock.yaml
+
+**/.output
+**/.nuxt
+**/dist
+
+/packages/lib/package.json

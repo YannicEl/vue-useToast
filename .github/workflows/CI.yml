@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - 'main'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  comment:
+    name: Add preview url comment
+
+    if: github.event_name == 'pull_request'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Add preview url comment
+        uses: ./.github/actions/pr_comment
+        with:
+          body: ⏳ Deployment in progress! A preview url will be shown here when the deployment has finished.
+
+  build_lib:
+    name: Build
+    uses: ./.github/workflows/build_lib.yml
+
+  format:
+    name: Format
+    uses: ./.github/workflows/format.yml
+
+  test:
+    name: Test
+    needs:
+      - build_lib
+      - format
+    uses: ./.github/workflows/test_lib.yml
+
+  release:
+    if: github.event_name == 'push'
+    name: Release lib
+    needs:
+      - test
+    uses: ./.github/workflows/release_lib.yml
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  build_docs:
+    name: Build
+    needs:
+      - build_lib
+    uses: ./.github/workflows/build_docs.yml
+
+  deploy_docs:
+    # if: github.event_name == 'push'
+    name: Deploy docs
+    needs:
+      - test
+      - build_docs
+    uses: ./.github/workflows/deploy_docs.yml
+    secrets:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

@@ -1,0 +1,21 @@
+{
+	"name": "docs",
+	"type": "module",
+	"scripts": {
+		"dev": "vitepress dev --port 3000",
+		"build": "vitepress build",
+		"preview": "vitepress preview",
+		"deploy:dev": "wrangler pages deploy .vitepress/dist --project-name=vuetils-toast-docs-dev --commit-dirty",
+		"deploy:prod": "wrangler pages deploy .vitepress/dist --project-name=vuetils-toast-docs-prod --commit-dirty"
+	},
+	"dependencies": {
+		"@vuetils/toast": "workspace:*",
+		"vue": "3.4.19"
+	},
+	"devDependencies": {
+		"sass": "1.71.1",
+		"unocss": "0.58.5",
+		"vitepress": "1.0.0-rc.44",
+		"wrangler": "3.29.0"
+	}
+}

@@ -1,0 +1,96 @@
+name: Build
+
+on:
+  workflow_call:
+    secrets:
+      NPM_TOKEN:
+        required: true
+
+jobs:
+  canary:
+    name: Canary
+
+    if: startsWith(github.event.head_commit.message, 'chore(release)') == false
+
+    permissions:
+      id-token: write # to create releae with provenance
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Restore build cache
+        uses: actions/download-artifact@v4
+        with:
+          name: lib-build
+          path: packages/lib/dist
+
+      - name: Install dependencies
+        run: pnpm --filter @vuetils/toast install
+
+      - name: Publish canary release
+        run: pnpm run release:canary
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
+
+  production:
+    name: Production
+
+    if: startsWith(github.event.head_commit.message, 'chore(release)') == true
+
+    permissions:
+      id-token: write # to create releae with provenance
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Restore build cache
+        uses: actions/download-artifact@v4
+        with:
+          name: lib-build
+          path: packages/lib/dist
+
+      - name: Install dependencies
+        run: pnpm --filter @vuetils/toast install
+
+      - name: Publish release
+        run: pnpm publish --filter @vuetils/toast --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
