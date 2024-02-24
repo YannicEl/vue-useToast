@@ -1,13 +1,18 @@
 <template>
-	<div class="flex h-screen w-screen items-center justify-center">
-		<button>Press me</button>
+	<div class="flex flex h-screen w-screen flex-col items-center justify-center">
+		<button @click="addToast">Press me</button>
 	</div>
+
+	<Toaster :customToast="CustomToast" />
 </template>
 
 <script setup lang="ts">
-import { useToast } from '@vuetils/toast';
+import { toast, Toaster } from '@vuetils/toast';
+import CustomToast from './components/CustomToast.vue';
 
-useToast();
+function addToast() {
+	toast.success(Date.now() + '', { autoClose: false });
+}
 </script>
 
 <style></style>

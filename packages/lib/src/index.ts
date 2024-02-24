@@ -1,2 +1,3 @@
-export { default as Toast } from './components/Toast.vue';
-export { useToast } from './composables/useToast';
+export { default as Toaster } from './components/Toaster.vue';
+export { toast, toasts } from './composables/useToast';
+export type { Toast, ToastOptions, ToastType } from './composables/useToast';
