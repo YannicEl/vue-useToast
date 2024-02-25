@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex h-screen w-screen flex-col items-center justify-center">
 		<button class="rounded-md border border-black px-2 py-1 shadow-xl" @click="onClick">
-			Press me
+			Press me!
 		</button>
 
 		<div class="mt-4 grid grid-cols-3 gap-4">
