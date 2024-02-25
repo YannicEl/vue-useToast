@@ -12,11 +12,11 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/YannicEl/vue-useToast
-# features:
-#   - title: ⚡️ Tiny
-#     details: With less than 5KB minified (2KB gzip) bundle size shouldn't be a concern for most apps.
-#   - title: 🔑 Typesafe
-#     details: Autocomplete thanks to type inference even when using JavaScript.
-#   - title: 🔌 Extensible
-#     details: Extend the core functionality with a powerful plugin system.
+features:
+  - title: ⚡️ Tiny
+    details: With less than 5KB minified (2KB gzip) bundle size shouldn't be a concern for most apps.
+  - title: 🔑 Typesafe
+    details: Autocomplete thanks to type inference even when using JavaScript.
+  - title: 🔌 Customizable
+    details: Use the default Toast component or build your own. It's up to you.
 ---
