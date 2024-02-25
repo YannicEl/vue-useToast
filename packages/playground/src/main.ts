@@ -1,3 +1,4 @@
+import '@unocss/reset/tailwind.css';
 import '@vuetils/toast/style.css';
 import 'virtual:uno.css';
 import { createApp } from 'vue';

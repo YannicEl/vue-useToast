@@ -75,6 +75,9 @@ importers:
 
   packages/playground:
     dependencies:
+      '@unocss/reset':
+        specifier: 0.58.5
+        version: 0.58.5
       '@vuetils/form':
         specifier: 0.2.7
         version: 0.2.7(vue@3.4.19)
@@ -96,7 +99,7 @@ importers:
         version: 0.58.5(postcss@8.4.35)(vite@5.1.4)
       vite:
         specifier: 5.1.4
-        version: 5.1.4(sass@1.71.1)
+        version: 5.1.4(@types/node@20.11.20)
       vue-tsc:
         specifier: 1.8.27
         version: 1.8.27(typescript@5.3.3)
@@ -1490,7 +1493,6 @@ packages:
 
   /@unocss/reset@0.58.5:
     resolution: {integrity: sha512-2wMrkCj3SSb5hrx9TKs5jZa34QIRkHv9FotbJutAPo7o8hx+XXn56ogzdoUrcFPJZJUx2R2nyOVbSlGMIjtFtw==}
-    dev: true
 
   /@unocss/rule-utils@0.58.5:
     resolution: {integrity: sha512-w0sGJoeUGwMWLVFLEE9PDiv/fQcQqZnTIIQLYNCjTdqXDRlwTp9ACW0h47x/hAAIXdOtEOOBuTfjGD79GznUmA==}
