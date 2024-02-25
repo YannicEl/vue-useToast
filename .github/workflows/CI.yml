@@ -4,14 +4,14 @@ on:
   push:
     branches:
       - 'main'
-    paths-ignore:
-      - 'packages/playground/**'
+    paths:
+      - '!packages/playground/**'
 
   pull_request:
     branches:
       - 'main'
-    paths-ignore:
-      - 'packages/playground/**'
+    paths:
+      - '!packages/playground/**'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
