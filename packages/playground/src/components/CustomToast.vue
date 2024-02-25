@@ -1,11 +1,11 @@
 <template>
-	<div class="mx-auto max-w-max bg-blue-500">
-		<span>{{ message }}</span>
+	<div class="max-w-max rounded-md bg-black p-4 text-white shadow-xl">
+		<span>{{ id }}</span>
 	</div>
 </template>
 
 <script setup lang="ts">
 import type { Toast } from '@vuetils/toast';
 
-const { message } = defineProps<Toast>();
+const { id } = defineProps<Toast>();
 </script>

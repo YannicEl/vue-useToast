@@ -1,18 +1,33 @@
-import { ref } from 'vue';
+import { Component, ref } from 'vue';
 
 export type ToastType = 'success' | 'error' | 'loading';
 
-export interface Toast {
+export type Toast = {
+	id: string;
 	type: ToastType;
 	message: string;
+	createdAt: Date;
 	close: (delay?: number) => void;
-}
+};
 
-export interface ToastOptions {
+export type ToastPosition =
+	| 'top-left'
+	| 'top-center'
+	| 'top-right'
+	| 'bottom-left'
+	| 'bottom-center'
+	| 'bottom-right';
+
+export type ToasterOptions = {
+	toast: Component<Toast>;
+	position?: ToastPosition;
+};
+
+export type ToastOptions = {
 	type?: ToastType;
 	delay?: number;
 	autoClose?: boolean;
-}
+};
 
 export const toasts = ref<Map<string, Toast>>(new Map());
 let runningId = 0;
@@ -20,12 +35,14 @@ let runningId = 0;
 export function addToast(
 	message: string,
 	{ type = 'success', delay = 3000, autoClose = true }: ToastOptions = {}
-) {
+): Toast {
 	const id = `${runningId++}`;
 
 	const toast: Toast = {
+		id,
 		type,
 		message,
+		createdAt: new Date(),
 		close: (_delay = delay) => {
 			setTimeout(() => {
 				toasts.value.delete(id);

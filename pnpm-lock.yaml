@@ -75,6 +75,9 @@ importers:
 
   packages/playground:
     dependencies:
+      '@vuetils/form':
+        specifier: 0.2.7
+        version: 0.2.7(vue@3.4.19)
       '@vuetils/toast':
         specifier: workspace:^
         version: link:../lib
@@ -93,7 +96,7 @@ importers:
         version: 0.58.5(postcss@8.4.35)(vite@5.1.4)
       vite:
         specifier: 5.1.4
-        version: 5.1.4(@types/node@20.11.20)
+        version: 5.1.4(sass@1.71.1)
       vue-tsc:
         specifier: 1.8.27
         version: 1.8.27(typescript@5.3.3)
@@ -1783,6 +1786,14 @@ packages:
 
   /@vue/shared@3.4.19:
     resolution: {integrity: sha512-/KliRRHMF6LoiThEy+4c1Z4KB/gbPrGjWwJR+crg2otgrf/egKzRaCPvJ51S5oetgsgXLfc4Rm5ZgrKHZrtMSw==}
+
+  /@vuetils/form@0.2.7(vue@3.4.19):
+    resolution: {integrity: sha512-1CCL9D+oq+4CjzkBumdmjOY4ychS7g0s4pPkMVDJZpkYPo8361DWnXH+O3weVtbULy/C2Iy7TLlEC+2I9xQ+Pw==}
+    peerDependencies:
+      vue: 3.x
+    dependencies:
+      vue: 3.4.19(typescript@5.3.3)
+    dev: false
 
   /@vueuse/core@10.8.0(vue@3.4.19):
     resolution: {integrity: sha512-G9Ok9fjx10TkNIPn8V1dJmK1NcdJCtYmDRyYiTMUyJ1p0Tywc1zmOoCQ2xhHYyz8ULBU4KjIJQ9n+Lrty74iVw==}

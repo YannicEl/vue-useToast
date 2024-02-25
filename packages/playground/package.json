@@ -7,6 +7,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@vuetils/form": "0.2.7",
 		"@vuetils/toast": "workspace:^",
 		"vue": "3.4.19"
 	},
