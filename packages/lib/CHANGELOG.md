@@ -1,4 +1,20 @@
 
+## v0.2.0
+
+[compare changes](https://github.com/YannicEl/vue-useToast/compare/v0.1.0...v0.2.0)
+
+### 🚀 Enhancements
+
+- ⚠️  Made toast prop on toaster required and added position prop ([3d1e735](https://github.com/YannicEl/vue-useToast/commit/3d1e735))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Made toast prop on toaster required and added position prop ([3d1e735](https://github.com/YannicEl/vue-useToast/commit/3d1e735))
+
+### ❤️ Contributors
+
+- Yannic ([@YannicEl](http://github.com/YannicEl))
+
 ## v0.1.0
 
 [compare changes](https://github.com/YannicEl/vue-useToast/compare/v0.0.1...v0.1.0)
