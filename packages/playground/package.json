@@ -10,7 +10,7 @@
 		"@unocss/reset": "0.58.5",
 		"@vuetils/form": "0.2.7",
 		"@vuetils/toast": "workspace:^",
-		"vue": "3.4.19"
+		"vue": "3.4.20"
 	},
 	"devDependencies": {
 		"@vitejs/plugin-vue": "5.0.4",
