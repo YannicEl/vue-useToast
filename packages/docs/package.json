@@ -13,9 +13,9 @@
 		"vue": "3.4.21"
 	},
 	"devDependencies": {
-		"sass": "1.71.1",
+		"sass": "1.72.0",
 		"unocss": "0.58.5",
-		"vitepress": "1.0.0-rc.44",
-		"wrangler": "3.30.0"
+		"vitepress": "1.0.0-rc.45",
+		"wrangler": "3.33.0"
 	}
 }
