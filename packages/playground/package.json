@@ -7,16 +7,16 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@unocss/reset": "0.58.8",
+		"@unocss/reset": "0.59.4",
 		"@vuetils/form": "0.2.7",
 		"@vuetils/toast": "workspace:^",
-		"vue": "3.4.21"
+		"vue": "3.4.23"
 	},
 	"devDependencies": {
 		"@vitejs/plugin-vue": "5.0.4",
-		"typescript": "5.4.3",
-		"unocss": "0.58.8",
-		"vite": "5.2.7",
-		"vue-tsc": "2.0.7"
+		"typescript": "5.4.5",
+		"unocss": "0.59.4",
+		"vite": "5.2.9",
+		"vue-tsc": "2.0.13"
 	}
 }
