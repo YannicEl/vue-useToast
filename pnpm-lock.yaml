@@ -18,11 +18,11 @@ importers:
         specifier: 3.2.5
         version: 3.2.5
       prettier-plugin-organize-imports:
-        specifier: 3.2.4
-        version: 3.2.4(@volar/vue-typescript@1.6.5(typescript@5.4.5))(prettier@3.2.5)(typescript@5.4.5)
+        specifier: 4.1.0
+        version: 4.1.0(prettier@3.2.5)(typescript@5.4.5)
       prettier-plugin-tailwindcss:
         specifier: 0.5.14
-        version: 0.5.14(prettier-plugin-organize-imports@3.2.4(@volar/vue-typescript@1.6.5(typescript@5.4.5))(prettier@3.2.5)(typescript@5.4.5))(prettier@3.2.5)
+        version: 0.5.14(prettier-plugin-organize-imports@4.1.0(prettier@3.2.5)(typescript@5.4.5))(prettier@3.2.5)
 
   packages/docs:
     dependencies:
@@ -1408,6 +1408,7 @@ packages:
   glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -1449,6 +1450,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -1764,17 +1766,14 @@ packages:
   preact@10.19.6:
     resolution: {integrity: sha512-gympg+T2Z1fG1unB8NH29yHJwnEaCH37Z32diPDku316OTnRPeMbiRV9kTrfZpocXjdfnWuFUl/Mj4BHaf6gnw==}
 
-  prettier-plugin-organize-imports@3.2.4:
-    resolution: {integrity: sha512-6m8WBhIp0dfwu0SkgfOxJqh+HpdyfqSSLfKKRZSFbDuEQXDDndb8fTpRWkUrX/uBenkex3MgnVk0J3b3Y5byog==}
+  prettier-plugin-organize-imports@4.1.0:
+    resolution: {integrity: sha512-5aWRdCgv645xaa58X8lOxzZoiHAldAPChljr/MT0crXVOWTZ+Svl4hIWlz+niYSlO6ikE5UXkN1JrRvIP2ut0A==}
     peerDependencies:
-      '@volar/vue-language-plugin-pug': ^1.0.4
-      '@volar/vue-typescript': ^1.0.4
       prettier: '>=2.0'
       typescript: '>=2.9'
+      vue-tsc: ^2.1.0
     peerDependenciesMeta:
-      '@volar/vue-language-plugin-pug':
-        optional: true
-      '@volar/vue-typescript':
+      vue-tsc:
         optional: true
 
   prettier-plugin-tailwindcss@0.5.14:
@@ -3972,18 +3971,16 @@ snapshots:
 
   preact@10.19.6: {}
 
-  prettier-plugin-organize-imports@3.2.4(@volar/vue-typescript@1.6.5(typescript@5.4.5))(prettier@3.2.5)(typescript@5.4.5):
+  prettier-plugin-organize-imports@4.1.0(prettier@3.2.5)(typescript@5.4.5):
     dependencies:
       prettier: 3.2.5
       typescript: 5.4.5
-    optionalDependencies:
-      '@volar/vue-typescript': 1.6.5(typescript@5.4.5)
 
-  prettier-plugin-tailwindcss@0.5.14(prettier-plugin-organize-imports@3.2.4(@volar/vue-typescript@1.6.5(typescript@5.4.5))(prettier@3.2.5)(typescript@5.4.5))(prettier@3.2.5):
+  prettier-plugin-tailwindcss@0.5.14(prettier-plugin-organize-imports@4.1.0(prettier@3.2.5)(typescript@5.4.5))(prettier@3.2.5):
     dependencies:
       prettier: 3.2.5
     optionalDependencies:
-      prettier-plugin-organize-imports: 3.2.4(@volar/vue-typescript@1.6.5(typescript@5.4.5))(prettier@3.2.5)(typescript@5.4.5)
+      prettier-plugin-organize-imports: 4.1.0(prettier@3.2.5)(typescript@5.4.5)
 
   prettier@3.2.5: {}
 
